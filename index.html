@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tushar David — Software Developer</title>
+<meta name="description" content="Tushar David — Software Developer, MCA Graduate. Resume and project portfolio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#101418;
+    --paper:#F7F5F0;
+    --paper-raised:#FFFFFF;
+    --line:#DAD5C8;
+    --signal:#C8542C;
+    --signal-dim:#E8D9CC;
+    --mono:#5B5B52;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--signal); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  .wrap{max-width:760px; margin:0 auto; padding:0 24px;}
+
+  /* ---------- Header / Hero ---------- */
+  header.hero{
+    border-bottom:1px solid var(--line);
+    padding:64px 0 40px;
+  }
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--signal);
+    margin-bottom:18px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .eyebrow::before{
+    content:"";
+    width:8px; height:8px;
+    background:var(--signal);
+    display:inline-block;
+    border-radius:1px;
+  }
+  h1{
+    font-family:'Space Grotesk',sans-serif;
+    font-weight:700;
+    font-size:clamp(38px,7vw,56px);
+    letter-spacing:-0.02em;
+    line-height:1.02;
+  }
+  .role{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:16px;
+    color:var(--mono);
+    margin-top:10px;
+  }
+  .contact-row{
+    margin-top:28px;
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13.5px;
+  }
+  .contact-row a{color:var(--ink); border-bottom:1px solid var(--line);}
+  .contact-row a:hover{border-color:var(--signal); color:var(--signal); text-decoration:none;}
+  .btn-row{margin-top:26px; display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    padding:10px 18px;
+    border:1px solid var(--ink);
+    border-radius:3px;
+    color:var(--ink);
+    transition:background .15s ease,color .15s ease;
+  }
+  .btn:hover{background:var(--ink); color:var(--paper); text-decoration:none;}
+  .btn.primary{background:var(--signal); border-color:var(--signal); color:#fff;}
+  .btn.primary:hover{background:#A8421F; border-color:#A8421F; color:#fff;}
+
+  /* ---------- Section scaffolding ---------- */
+  section{padding:48px 0;}
+  section + section{border-top:1px solid var(--line);}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:28px;
+  }
+  .section-num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:13px;
+    color:var(--signal);
+  }
+  h2{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:-0.01em;
+  }
+  p.lede{
+    max-width:620px;
+    color:#2c2c28;
+    font-size:16px;
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:22px 32px;
+  }
+  .skill-block dt{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--mono);
+    margin-bottom:6px;
+  }
+  .skill-block dd{font-size:14.5px;}
+
+  /* ---------- Experience / Projects ---------- */
+  .entry{
+    display:grid;
+    grid-template-columns:120px 1fr;
+    gap:20px;
+    padding:22px 0;
+    border-top:1px solid var(--line);
+  }
+  .entry:first-of-type{border-top:none; padding-top:0;}
+  .entry-tag{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--mono);
+    padding-top:3px;
+  }
+  .entry h3{
+    font-family:'Space Grotesk',sans-serif;
+    font-size:17px;
+    font-weight:600;
+    margin-bottom:4px;
+  }
+  .entry .sub{
+    font-size:13.5px;
+    color:var(--mono);
+    margin-bottom:10px;
+    font-style:italic;
+  }
+  .entry ul{list-style:none; display:flex; flex-direction:column; gap:6px;}
+  .entry li{
+    font-size:14.5px;
+    padding-left:16px;
+    position:relative;
+    color:#262622;
+  }
+  .entry li::before{
+    content:"—";
+    position:absolute;
+    left:0;
+    color:var(--signal);
+  }
+
+  @media (max-width:560px){
+    .entry{grid-template-columns:1fr;}
+    .entry-tag{padding-top:0;}
+  }
+
+  /* ---------- Education / Certs ---------- */
+  .two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
+  }
+  @media (max-width:560px){ .two-col{grid-template-columns:1fr;} }
+  .mini-list{list-style:none;}
+  .mini-list li{padding:10px 0; border-top:1px solid var(--line); font-size:14.5px;}
+  .mini-list li:first-child{border-top:none;}
+  .mini-list .deg{font-weight:600;}
+  .mini-list .school{color:var(--mono); font-size:13px; display:block; margin-top:2px;}
+
+  footer{
+    padding:36px 0 60px;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12.5px;
+    color:var(--mono);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:10px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="hero">
+    <div class="eyebrow">Available for opportunities</div>
+    <h1>Tushar David</h1>
+    <div class="role">Software Developer — MCA Graduate, Bidar, Karnataka</div>
+    <div class="contact-row">
+      <a href="mailto:tusharjohnson53@gmail.com">tusharjohnson53@gmail.com</a>
+      <a href="tel:+919108968302">+91 91089 68302</a>
+      <span>Bidar, Karnataka</span>
+    </div>
+    <div class="btn-row">
+      <a class="btn primary" href="Tushar_David_Resume.pdf" download>Download PDF Resume</a>
+      <a class="btn" href="mailto:tusharjohnson53@gmail.com">Email me</a>
+    </div>
+  </header>
+
+  <section id="summary">
+    <div class="section-head"><span class="section-num">01</span><h2>Summary</h2></div>
+    <p class="lede">Software developer with an MCA and BCA, and hands-on project experience across Python, Java, SQL, and web technologies including Django and Bootstrap. Built academic and internship projects spanning database-driven systems, blockchain-based threat detection, data analysis, and full-stack web applications — with a strong grounding in SDLC, OOP, and DBMS concepts.</p>
+  </section>
+
+  <section id="skills">
+    <div class="section-head"><span class="section-num">02</span><h2>Technical Skills</h2></div>
+    <dl class="skill-grid">
+      <div class="skill-block"><dt>Languages</dt><dd>Python, Java, C, JavaScript</dd></div>
+      <div class="skill-block"><dt>Web &amp; Frameworks</dt><dd>HTML, CSS, JavaScript, Django, Bootstrap</dd></div>
+      <div class="skill-block"><dt>Databases</dt><dd>MySQL, SQL</dd></div>
+      <div class="skill-block"><dt>Concepts</dt><dd>DBMS, SDLC, OOP, Data Analysis &amp; Statistics, Blockchain Fundamentals, Cybersecurity Fundamentals</dd></div>
+      <div class="skill-block"><dt>Tools &amp; Platforms</dt><dd>VS Code, Jupyter Notebook, MySQL Workbench, Git</dd></div>
+      <div class="skill-block"><dt>Operating Systems</dt><dd>Windows, Linux</dd></div>
+    </dl>
+  </section>
+
+  <section id="experience">
+    <div class="section-head"><span class="section-num">03</span><h2>Internship Experience</h2></div>
+    <div class="entry">
+      <div class="entry-tag">Robomanthan</div>
+      <div>
+        <h3>Software Development Intern</h3>
+        <div class="sub">Project: Dynamic Food Ordering App</div>
+        <ul>
+          <li>Built a full-stack food ordering web application using Django (Python), Bootstrap, and MySQL, covering menu browsing, cart management, and order placement.</li>
+          <li>Implemented backend logic for order processing and data handling, applying SDLC practices from requirement analysis through deployment.</li>
+          <li>Collaborated within a small team to design responsive front-end interfaces with HTML, CSS, and Bootstrap.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="section-head"><span class="section-num">04</span><h2>Academic Projects</h2></div>
+
+    <div class="entry">
+      <div class="entry-tag">MCA Project</div>
+      <div>
+        <h3>Adaptive Cyber Threat Detection Using Blockchain Analytics</h3>
+        <ul>
+          <li>Designed an academic model applying blockchain principles — integrity, transparency, tamper-resistant logging — to detect and analyze cyber threats.</li>
+          <li>Applied cybersecurity fundamentals and secure data handling practices to structure threat analysis logic.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-tag">BCA Project</div>
+      <div>
+        <h3>Cryptocurrency Price Prediction System</h3>
+        <ul>
+          <li>Analyzed historical cryptocurrency price data using Python to identify trends and generate predictive insights.</li>
+          <li>Applied data preprocessing and statistical analysis techniques to improve the reliability of predictions.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="entry">
+      <div class="entry-tag">BCA Project</div>
+      <div>
+        <h3>Airline Ticket Reservation System</h3>
+        <ul>
+          <li>Designed a database-driven reservation system in SQL handling flight search, seat availability, and booking records.</li>
+          <li>Applied SDLC and data validation principles to ensure accurate, consistent booking data.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="section-head"><span class="section-num">05</span><h2>Education &amp; Certifications</h2></div>
+    <div class="two-col">
+      <div>
+        <ul class="mini-list">
+          <li><span class="deg">Master of Computer Applications (MCA)</span><span class="school">Guru Nanak Dev Engineering College, Bidar, Karnataka</span></li>
+          <li><span class="deg">Bachelor of Computer Applications (BCA)</span><span class="school">Sharanbasva University, Kalaburagi, Karnataka</span></li>
+        </ul>
+      </div>
+      <div>
+        <ul class="mini-list">
+          <li><span class="deg">Data Analytics Course</span><span class="school">QBITS (Online)</span></li>
+          <li><span class="deg">Computer Fundamentals</span><span class="school">KGTTI, Kalaburagi</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Languages: English, Kannada, Hindi</span>
+    <span>Interests: Workout, Reading, Sports</span>
+  </footer>
+</div>
+
+</body>
+</html>
